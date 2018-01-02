@@ -1,0 +1,36 @@
+{
+	"name": "ji",
+	"version": "1.0.0",
+	"description": "javascript intigration for personal usage",
+	"main": "index.js",
+	"directories": {
+		"lib": "lib"
+	},
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"serve": "webpack "
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/JoeAndSofia/JavascriptIntegrate.git"
+	},
+	"keywords": [
+		"javascript",
+		"integrate"
+	],
+	"author": "BearJoe",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/JoeAndSofia/JavascriptIntegrate/issues"
+	},
+	"homepage": "https://github.com/JoeAndSofia/JavascriptIntegrate#readme",
+	"dependencies": {
+		"babel-preset-es2015": "^6.24.1",
+		"babel-preset-stage-0": "^6.24.1",
+		"babel-preset-stage-1": "^6.24.1",
+		"babel-preset-stage-2": "^6.24.1",
+		"babel-preset-stage-3": "^6.24.1",
+		"webpack": "^3.10.0"
+	},
+	"devDependencies": {}
+}
