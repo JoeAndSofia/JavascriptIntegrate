@@ -32,6 +32,7 @@ var movement = {
                         // console.log(event.code, event.keyCode, event.which, event);
                         // event.preventDefault();  //disable when developing
                         var ele_cs = getComputedStyle(ele)
+						console.log("this", this);
                         switch (event.keyCode){
                             case movement.defaultMoveKey[movement.moveDesc.up_lt]:
                                 movement.moveSeal.moveY(ele, ele_cs, -1);
