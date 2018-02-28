@@ -7,22 +7,22 @@
 	<style>
 		body{
 			padding: 0px;
-			margin: 8px;
+			margin: 0px;
 			user-select: none;
 		}
 		.select-area{
 			background-color: #c9c9c9;
 			position: relative;
-			width: 600px;
-			height: 600px;
+			width: 100px;
+			height: 100px;
+			margin: 50px;
+			padding: 50px;
 		}
 		.selectable{
 			position: absolute;
 			width: 15px;
 			height: 15px;
 			line-height: 15px;
-		}
-		.un-selected{
 			background-color: #ffa500;
 		}
 		.selected{
@@ -32,24 +32,22 @@
 	</style>
 </head>
 <body>
-<div class="select-area" draggable="true">
+<div id="select-area" class="select-area" draggable="true">
 	<span class="selectable un-selected">1</span>
 	<span class="selectable un-selected">2</span>
-	
+
 	<span class="selectable un-selected">3</span>
 </div>
 
 <script>
 	var targetList = document.querySelectorAll(".selectable");
-	
+
 	for(let i=0; i<targetList.length; i++){
 //		console.log(targetList[i]);
 		select.applyAction.clickSelect(targetList[i]);
 	}
-	if(targetList.length > 0){
-		select.applyAction.dragSelect(targetList[0]);
-	}
-	
+	select.applyAction.dragSelect(document.getElementById("select-area"));
+
 </script>
 
 </body>
