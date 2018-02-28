@@ -18,12 +18,13 @@ var select = {
 			if(element){
 				let ele = element
 				ele.addEventListener("mousedown", function(event){
-				    event.preventDefault()
+				    // event.preventDefault()
 					let ele = this
 					let selectables = ele.querySelectorAll(select.defaultSelectClassName[0])
 					for(let i = 0; i < ele.length; i++){
                         selectables[i].classList.remove(select.defaultSelectClassName[1])
 					}
+					ele.dataset.selecting = "1";
 					// console.log(`____________________
 // button:${event.button};
 // buttons:${event.buttons};
@@ -33,6 +34,12 @@ var select = {
 // page:${event.pageX},${event.pageY};
 // screen:${event.screenX}, ${event.screenY}; `);
 
+				});
+				ele.addEventListener("mouseup", function () {
+					if(event.target.dataset.selecting == "1"){
+						console.log("mouseup", "select end")
+						event.target.dataset.selecting = ""
+					}
 				});
 				ele.addEventListener("mousemove", function(event){
                     event.preventDefault()
@@ -47,12 +54,20 @@ var select = {
 // screen:${event.screenX}, ${event.screenY}; `);
 				});
 				ele.addEventListener("mouseout", function(event){
-					event.preventDefault()
-	                console.log(`mouseout--button:${event.button};buttons:${event.buttons};client:${event.clientX},${event.clientY};layer:${event.layerX},${event.layerY};movement:${event.movementX},${event.movementY};page:${event.pageX},${event.pageY};screen:${event.screenX}, ${event.screenY}; `);
+					// event.preventDefault()
+					if(event.relatedTarget.tagName == 'BODY'){
+						if(event.target.dataset.selecting == "1"){
+							console.log("mouseout", "select end")
+							event.target.dataset.selecting = ""
+						}
+					}
+					
+					// console.log(`mouseout--button:${event.button};buttons:${event.buttons};client:${event.clientX},${event.clientY};layer:${event.layerX},${event.layerY};movement:${event.movementX},${event.movementY};page:${event.pageX},${event.pageY};screen:${event.screenX}, ${event.screenY}; `);
 				});
 				ele.addEventListener("mouseenter", function(event){
-					event.preventDefault()
-					console.log(`mouseenter--button:${event.button};buttons:${event.buttons};client:${event.clientX},${event.clientY};layer:${event.layerX},${event.layerY};movement:${event.movementX},${event.movementY};page:${event.pageX},${event.pageY};screen:${event.screenX}, ${event.screenY}; `);
+					// event.preventDefault()
+					// console.log("mouseenter", event.relatedTarget)
+					// console.log(`mouseenter--button:${event.button};buttons:${event.buttons};client:${event.clientX},${event.clientY};layer:${event.layerX},${event.layerY};movement:${event.movementX},${event.movementY};page:${event.pageX},${event.pageY};screen:${event.screenX}, ${event.screenY}; `);
 				});
 				ele.addEventListener("dragstart", function(event){
 					console.log("dragstart")
