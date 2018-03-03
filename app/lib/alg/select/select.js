@@ -18,6 +18,7 @@ var select = {
 			if(element){
 				let ele = element
 				ele.addEventListener("mousedown", function(event){
+					event.preventDefault()
 				    // event.preventDefault()
 					let ele = this
 					let selectables = ele.querySelectorAll(select.defaultSelectClassName[0])
@@ -25,42 +26,41 @@ var select = {
                         selectables[i].classList.remove(select.defaultSelectClassName[1])
 					}
 					ele.dataset.selecting = "1";
-					// console.log(`____________________
-// button:${event.button};
-// buttons:${event.buttons};
-// client:${event.clientX},${event.clientY};
-// layer:${event.layerX},${event.layerY};
-// movement:${event.movementX},${event.movementY};
-// page:${event.pageX},${event.pageY};
-// screen:${event.screenX}, ${event.screenY}; `);
+					ele.dataset.selectStartX = event.layerX;
+					ele.dataset.selectStartY = event.layerY;
+					// util.event.showCoordinate(event);
 
 				});
 				ele.addEventListener("mouseup", function () {
 					if(event.target.dataset.selecting == "1"){
-						console.log("mouseup", "select end")
+						// console.log("mouseup", "select end")
 						event.target.dataset.selecting = ""
 					}
 				});
 				ele.addEventListener("mousemove", function(event){
                     event.preventDefault()
 					let ele = this
-//                     console.log(`____________________
-// button:${event.button};
-// buttons:${event.buttons};
-// client:${event.clientX},${event.clientY};
-// layer:${event.layerX},${event.layerY};
-// movement:${event.movementX},${event.movementY};
-// page:${event.pageX},${event.pageY};
-// screen:${event.screenX}, ${event.screenY}; `);
+					// util.event.showCoordinate(event)
 				});
 				ele.addEventListener("mouseout", function(event){
-					// event.preventDefault()
-					if(event.relatedTarget.tagName == 'BODY'){
-						if(event.target.dataset.selecting == "1"){
-							console.log("mouseout", "select end")
-							event.target.dataset.selecting = ""
+					// console.log(event)
+					let rt = event.relatedTarget
+					let self = event.target
+					console.log("this", this)
+					console.log("target", self)
+					console.log("relatedTarget", rt)
+
+					if(this == target){
+						if(rt.tagName == 'BODY'){
+							if(event.target.dataset.selecting == "1"){
+								// console.log("mouseout", "select end")
+								event.target.dataset.selecting = ""
+							}
+						}else if(rt==event.target){
+							console.log("mouseout to self")
 						}
 					}
+
 					
 					// console.log(`mouseout--button:${event.button};buttons:${event.buttons};client:${event.clientX},${event.clientY};layer:${event.layerX},${event.layerY};movement:${event.movementX},${event.movementY};page:${event.pageX},${event.pageY};screen:${event.screenX}, ${event.screenY}; `);
 				});

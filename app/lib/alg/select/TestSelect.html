@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<script src="select.js"></script>
+	<script data-main="index" src="../../trd/require/require_minified.js"></script>
 	<meta charset="UTF-8">
 	<title>Test SelectJs</title>
 	<style>
@@ -46,35 +46,14 @@
 </head>
 <body>
 <div id="select-area-1" class="select-area" draggable="false">
-	<div class="select-layer"></div>
+	<!--<div class="select-layer"></div>-->
 </div>
 
 <div id="select-area-2" class="select-area" draggable="false">
 </div>
 
 <script>
-	let area1 = document.getElementById("select-area-1")
-	let area2 = document.getElementById("select-area-2")
-	for(let i=0;i<25;i++){
-		let span = document.createElement("span")
-		span.classList.add("selectable")
-		span.classList.add("un-selected")
-		span.innerText = i;
-		span.style.left = (25 * (i % 5) + 10) + "px"
-		span.style.top = (25 * Math.floor(i / 5) + 10) + "px"
-		area1.appendChild(span)
-//		area2.appendChild(span)
-	}
-	
-	var targetList = document.querySelectorAll(".selectable");
 
-	for(let i=0; i<targetList.length; i++){
-//		console.log(targetList[i]);
-		select.applyAction.clickSelect(targetList[i]);
-	}
-	let x = document.getElementById("select-area-1").querySelector(".select-layer")
-	console.log("select-layer", x)
-	select.applyAction.dragSelect(x);
 
 </script>
 
